@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import sprite from '../../images/sprite.svg';
+import sprite from '../../sprite.svg';
 import {
   Form,
   Label,

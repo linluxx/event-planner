@@ -1,4 +1,4 @@
-import sprite from '../../images/sprite.svg';
+import sprite from '../../sprite.svg';
 
 import { Btn } from './BackButton.styled';
 

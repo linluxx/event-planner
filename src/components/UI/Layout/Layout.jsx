@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import sprite from '../../../images/sprite.svg';
+import sprite from '../../../sprite.svg';
 
 import {
   Header,

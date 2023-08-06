@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import Card from '../../components/Card/Card';
-import sprite from '../../images/sprite.svg';
+import sprite from '../../sprite.svg';
 import { AddBtn, BtnWrap, CardsContainer } from './Main.styled';
 
 const Main = () => {
