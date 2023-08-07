@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import sprite from '../../sprite.svg';
@@ -16,9 +16,11 @@ import {
   InputsWrap,
 } from './ReusedForm.styled';
 import DatePickerComponent from '../../components/Calendar/Calendar';
+import Clock from '../TimePicker/TimePicker';
 
 const ReusedForm = ({ type, event = null }) => {
-  //   const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const navigate = useNavigate();
   const {
     register,
@@ -39,11 +41,16 @@ const ReusedForm = ({ type, event = null }) => {
     },
   });
 
-  //   const setDate = data => {
-  //     setSelectedDate(data);
-  //   };
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
+  const handleTimeChange = time => {
+    setSelectedTime(time);
+  };
 
   const onSubmit = async data => {
+    data.date = selectedDate;
+    data.time = selectedTime;
     if (type === 'create') {
       await createEvent(data);
       navigate('/', { replace: true });
@@ -108,25 +115,15 @@ const ReusedForm = ({ type, event = null }) => {
         </Label>
         <Label>
           Select date
-          <DatePickerComponent value={event?.date} />
+          <DatePickerComponent
+            // value={event?.date}
+            selectedDate={selectedDate}
+            onDateChange={handleDateChange}
+          />
         </Label>
         <Label>
           Select time
-          <Input
-            type="text"
-            {...register('time', {
-              required: 'Required field',
-              minLength: { value: 2, message: 'Enter minimum 2 symbols' },
-            })}
-            style={{
-              border: errors.time ? '1px solid #FF2B77' : '1px solid #ACA7C3',
-            }}
-          />
-          {errors?.time && (
-            <Error>
-              <p>{errors?.time?.message || 'Invalid input'}</p>
-            </Error>
-          )}
+          <Clock onTimeChange={handleTimeChange} selectedTime={selectedTime} />
         </Label>
         <Label>
           Location

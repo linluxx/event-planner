@@ -77,7 +77,18 @@ export const Note = styled.div`
   background: #fff;
   box-shadow: 4px 5px 9px 0px rgba(166, 141, 174, 0.28);
   height: 32px;
-  color: ${p => p.theme.color.accent};
+  color: ${p => {
+    switch (p.$priority) {
+      case 'Low':
+        return p.theme.color.low;
+      case 'High':
+        return p.theme.color.high;
+      case 'Medium':
+        return p.theme.color.medium;
+      default:
+        return p.theme.color.accent;
+    }
+  }};
   font-size: 14px;
   line-height: 24px;
   text-align: center;

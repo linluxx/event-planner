@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 import DEVICE from '../../../constants/deviceSize';
 
@@ -15,7 +16,7 @@ export const Wrap = styled.div`
   justify-content: space-between;
   margin-bottom: 24px;
 `;
-export const Title = styled.h1`
+export const Title = styled(NavLink)`
   font-family: 'Alata';
   color: ${p => p.theme.color.accent};
   font-size: 24px;

@@ -67,10 +67,21 @@ export const Type = styled.p`
   color: ${p => p.theme.color.accent};
 `;
 export const Importance = styled.p`
-  color: ${p => p.theme.color.high};
+  color: ${p => {
+    switch (p.$priority) {
+      case 'Low':
+        return p.theme.color.low;
+      case 'High':
+        return p.theme.color.high;
+      case 'Medium':
+        return p.theme.color.medium;
+      default:
+        return;
+    }
+  }};
 `;
 export const InfoWrap = styled.div`
-  transform: translateY(-40px);
+  transform: translateY(-50px);
   transition: transform 250ms ease-in-out;
 `;
 

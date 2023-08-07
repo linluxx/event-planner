@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+import { format } from 'date-fns';
 import { deleteEvent } from '../api/Api';
 
 import {
@@ -15,9 +15,7 @@ import {
 
 const CardDetails = ({ data }) => {
   const { category, date, description, location, priority, title } = data;
-  const formattedDate = new Date(date)
-    .toLocaleString('en-GB')
-    .replace(/\//g, '.');
+  const formattedDate = format(new Date(date), 'dd.MM.yy');
   const navigate = useNavigate();
 
   const onDeleteEvent = async () => {
@@ -33,7 +31,7 @@ const CardDetails = ({ data }) => {
           <Description>{description}</Description>
           <NotesWrap>
             <Note>{category}</Note>
-            <Note>{priority}</Note>
+            <Note $priority={priority}>{priority}</Note>
             <Note>{location}</Note>
             <Note>{formattedDate} at 12:00 am</Note>
           </NotesWrap>

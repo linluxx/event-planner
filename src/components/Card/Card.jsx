@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 import {
   Container,
   Note,
@@ -14,11 +16,9 @@ import {
 // import art from '../../art.png';
 
 const Card = ({ data }) => {
-  const { category, date, description, id, location, priority, title } = data;
-  const formattedDate = new Date(date)
-    .toLocaleString('en-GB')
-    .replace(/\//g, '.');
-
+  const { category, date, description, id, time, location, priority, title } =
+    data;
+  const formattedDate = format(new Date(date), 'dd.MM.yy');
   return (
     <Container>
       <NotesWrap>
@@ -26,14 +26,16 @@ const Card = ({ data }) => {
           <Type>{category}</Type>
         </Note>
         <Note>
-          <Importance>{priority}</Importance>
+          <Importance $priority={priority}>{priority}</Importance>
         </Note>
       </NotesWrap>
 
-      <img src="http://localhost:3000/event-planner/images/art.png" alt="art" />
+      <img src={`${process.env.PUBLIC_URL}/images/${category}.png`} alt="art" />
       <InfoWrap className="infoWrap">
         <Info>
-          <p>{formattedDate} at 12:00</p>
+          <p>
+            {formattedDate} at {time}
+          </p>
           <p>{location}</p>
         </Info>
         <Description>

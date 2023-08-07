@@ -60,7 +60,6 @@ export const Label = styled.label`
   }
 `;
 export const Input = styled.input`
-  box-sizing: border-box;
   width: 240px;
   padding: 16px 12px;
   border-radius: 8px;

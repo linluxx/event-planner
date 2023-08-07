@@ -16,7 +16,7 @@ const Layout = () => {
     <div>
       <Header>
         <Wrap>
-          <Title>Event Planner</Title>
+          <Title to="/">Event Planner</Title>
           <Select>
             <option value="value1">UK</option>
           </Select>
