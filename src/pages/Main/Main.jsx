@@ -1,12 +1,23 @@
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
+import { useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
 import sprite from '../../sprite.svg';
 import { AddBtn, BtnWrap, CardsContainer } from './Main.styled';
+import { getEvents } from '../../components/api/Api';
 
 const Main = () => {
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    (async function getEventsList() {
+      const data = await getEvents();
+      setEvents(data);
+      console.log(data);
+    })();
+  }, []);
+
   return (
     <div>
       <BtnWrap>
@@ -29,17 +40,9 @@ const Main = () => {
         </AddBtn>
       </BtnWrap>
       <CardsContainer>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {events.map(event => {
+          return <Card key={event.id} data={event} />;
+        })}
       </CardsContainer>
     </div>
   );

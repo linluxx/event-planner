@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="create" element={<CreateEvent />} />
-          <Route path="about" element={<EventDetails />} />
+          <Route path="event/:eventId" element={<EventDetails />} />
         </Route>
       </Routes>
     </div>
