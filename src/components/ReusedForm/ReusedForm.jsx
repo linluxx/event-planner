@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import sprite from '../../sprite.svg';
@@ -18,7 +18,7 @@ import {
 import DatePickerComponent from '../../components/Calendar/Calendar';
 
 const ReusedForm = ({ type, event = null }) => {
-  const [selectedDate, setSelectedDate] = useState('');
+  //   const [selectedDate, setSelectedDate] = useState('');
   const navigate = useNavigate();
   const {
     register,
@@ -39,9 +39,9 @@ const ReusedForm = ({ type, event = null }) => {
     },
   });
 
-  const setDate = data => {
-    setSelectedDate(data);
-  };
+  //   const setDate = data => {
+  //     setSelectedDate(data);
+  //   };
 
   const onSubmit = async data => {
     if (type === 'create') {
@@ -108,7 +108,7 @@ const ReusedForm = ({ type, event = null }) => {
         </Label>
         <Label>
           Select date
-          <DatePickerComponent setDate={setDate} value={event?.date} />
+          <DatePickerComponent value={event?.date} />
         </Label>
         <Label>
           Select time

@@ -14,8 +14,7 @@ import {
 // import art from '../../art.png';
 
 const Card = ({ data }) => {
-  const { category, date, description, id, location, priority, time, title } =
-    data;
+  const { category, date, description, id, location, priority, title } = data;
   const formattedDate = new Date(date)
     .toLocaleString('en-GB')
     .replace(/\//g, '.');

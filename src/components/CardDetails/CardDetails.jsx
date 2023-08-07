@@ -14,7 +14,7 @@ import {
 } from './CardDetails.styled';
 
 const CardDetails = ({ data }) => {
-  const { category, date, description, location, priority, time, title } = data;
+  const { category, date, description, location, priority, title } = data;
   const formattedDate = new Date(date)
     .toLocaleString('en-GB')
     .replace(/\//g, '.');
