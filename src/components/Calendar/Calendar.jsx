@@ -4,11 +4,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { DatePickerContainer, DatePickerWrapper } from './Calendar.styled';
 
-const DatePickerComponent = () => {
+const DatePickerComponent = ({ setDate }) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = date => {
     setSelectedDate(date);
+    setDate(selectedDate);
   };
 
   return (

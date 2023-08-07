@@ -1,5 +1,3 @@
-// import img from '../../images/art.png';
-
 import {
   Container,
   Note,
@@ -13,32 +11,36 @@ import {
   Btn,
   InfoWrap,
 } from './Card.styled';
+// import art from '../../art.png';
 
-const Card = () => {
+const Card = ({ data }) => {
+  const { category, date, description, id, location, priority, time, title } =
+    data;
+  const formattedDate = new Date(date)
+    .toLocaleString('en-GB')
+    .replace(/\//g, '.');
+
   return (
     <Container>
       <NotesWrap>
         <Note>
-          <Type>Art</Type>
+          <Type>{category}</Type>
         </Note>
         <Note>
-          <Importance>High</Importance>
+          <Importance>{priority}</Importance>
         </Note>
       </NotesWrap>
 
-      <img src="/images/art.png" alt="art" />
+      <img src="http://localhost:3000/event-planner/images/art.png" alt="art" />
       <InfoWrap className="infoWrap">
         <Info>
-          <p>12.07 at 12:00</p>
-          <p>Kyiv</p>
+          <p>{formattedDate} at 12:00</p>
+          <p>{location}</p>
         </Info>
         <Description>
-          <Title>Galery Opening</Title>
-          <Text>
-            Discover an enchanting evening celebrating the world of art at our
-            exclusive gallery opening.
-          </Text>
-          <Btn to="about">More info</Btn>
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+          <Btn to={`event/${id}`}>More info</Btn>
         </Description>
       </InfoWrap>
     </Container>

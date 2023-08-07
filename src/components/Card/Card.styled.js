@@ -105,6 +105,7 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 20px;
   color: #49454f;
+  height: 72px;
 `;
 
 export const Btn = styled(NavLink)`
@@ -118,7 +119,7 @@ export const Btn = styled(NavLink)`
   line-height: 20px;
   font-family: inherit;
   margin-left: auto;
-  margin-top: 20px;
+  margin-top: 16px;
   font-size: 14px;
   color: #fff;
   width: 114px;
