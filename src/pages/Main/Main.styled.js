@@ -12,15 +12,14 @@ export const BtnWrap = styled.div`
   gap: 24px;
   margin-bottom: 24px;
 `;
-
-export const AddBtn = styled(NavLink)`
+export const Btn = styled.button`
   padding: 16px;
   border: transparent;
   border-radius: 8px;
-  background: ${p => p.theme.color.accent};
+  background: ${p => p.theme.color.primary};
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   cursor: pointer;
-  color: #fff;
+  color: ${p => p.theme.color.text};
   display: flex;
   transition: transform 250ms ease;
   &:hover {
@@ -29,7 +28,43 @@ export const AddBtn = styled(NavLink)`
   svg {
     width: 24px;
     height: 24px;
-    stroke: #fff;
+    stroke: ${p => p.theme.color.text};
+    fill: ${p => p.theme.color.primary};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media ${tablet} {
+      margin-right: 16px;
+    }
+  }
+  p {
+    display: none;
+    @media ${tablet} {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      font-family: Poppins;
+    }
+  }
+`;
+
+export const AddBtn = styled(NavLink)`
+  padding: 16px;
+  border: transparent;
+  border-radius: 8px;
+  background: ${p => p.theme.color.accent};
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  cursor: pointer;
+  color: ${p => p.theme.color.primary};
+  display: flex;
+  transition: transform 250ms ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: ${p => p.theme.color.primary};
     display: flex;
     justify-content: center;
     align-items: center;

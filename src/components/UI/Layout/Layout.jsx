@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import sprite from '../../../sprite.svg';
+// import sprite from '../../../sprite.svg';
 
 import {
   Header,
   Title,
-  Select,
+  // Select,
   Wrap,
-  Input,
-  InputWrap,
+  // Input,
+  // InputWrap,
   Container,
 } from './Layout.styled';
 
@@ -17,16 +17,16 @@ const Layout = () => {
       <Header>
         <Wrap>
           <Title to="/">Event Planner</Title>
-          <Select>
+          {/* <Select>
             <option value="value1">UK</option>
-          </Select>
+          </Select> */}
         </Wrap>
-        <InputWrap>
+        {/* <InputWrap>
           <svg>
             <use href={sprite + '#search'} />
           </svg>
           <Input placeholder="Search by keywords" />
-        </InputWrap>
+        </InputWrap> */}
       </Header>
       <Container>
         <Outlet />

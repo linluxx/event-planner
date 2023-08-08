@@ -25,10 +25,6 @@ export const Container = styled.div`
       line-height: 1.5;
     }
     svg {
-      /* top: 16px;
-      right: 10px;
-      width: 20px;
-      height: 20px; */
       display: none;
     }
 
@@ -42,16 +38,5 @@ export const Container = styled.div`
   .ant-picker-input input::placeholder {
     font-size: 16px;
     font-family: Poppins;
-  }
-
-  .time-picker-wrap {
-    width: 240px;
-    height: 160px;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   }
 `;

@@ -54,7 +54,7 @@ export const NotesWrap = styled.div`
 `;
 export const Note = styled.div`
   padding: 8px 12px;
-  background-color: #fff;
+  background-color: ${p => p.theme.color.primary};
   border-radius: 8px;
   font-weight: 500;
   line-height: 20px;
@@ -101,7 +101,7 @@ export const Info = styled.div`
   }
 `;
 export const Description = styled.div`
-  background-color: #fff;
+  background-color: ${p => p.theme.color.primary};
   padding: 16px;
   margin-top: -7px;
 `;
@@ -132,7 +132,7 @@ export const Btn = styled(NavLink)`
   margin-left: auto;
   margin-top: 16px;
   font-size: 14px;
-  color: #fff;
+  color: ${p => p.theme.color.primary};
   width: 114px;
   height: 40px;
   transition: transform 250ms ease;

@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import DEVICE from '../../constants/deviceSize';
+import { NavLink } from 'react-router-dom';
 const { mobile, tablet, laptop } = DEVICE;
 
 export const Title = styled.h2`
@@ -18,7 +19,7 @@ export const Card = styled.div`
   width: 272px;
   height: 464px;
   border-radius: 8px;
-  background: #fff;
+  background: ${p => p.theme.color.primary};
   margin: 0 auto;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   @media ${tablet} {
@@ -74,7 +75,7 @@ export const NotesWrap = styled.div`
 export const Note = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
-  background: #fff;
+  background: ${p => p.theme.color.primary};
   box-shadow: 4px 5px 9px 0px rgba(166, 141, 174, 0.28);
   height: 32px;
   color: ${p => {
@@ -106,7 +107,6 @@ export const BtnWrap = styled.div`
 `;
 
 export const Btn = styled.button`
-  box-sizing: border-box;
   text-align: center;
   height: 32px;
   cursor: pointer;
@@ -115,27 +115,32 @@ export const Btn = styled.button`
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
-  color: ${p => {
-    switch (p.$category) {
-      case 'edit':
-        return p.theme.color.accent;
-      case 'delete':
-        return '#fff';
-      default:
-        return;
-    }
-  }};
+  color: ${p => p.theme.color.primary};
 
-  background-color: ${p => {
-    switch (p.$category) {
-      case 'edit':
-        return '#fff';
-      case 'delete':
-        return p.theme.color.accent;
-      default:
-        return;
-    }
-  }};
+  background-color: ${p => p.theme.color.accent};
+  border: 1px solid ${p => p.theme.color.accent};
+  border-radius: 4px;
+  transition: transform 250ms ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media ${mobile} {
+    width: 110px;
+  }
+`;
+
+export const EditLink = styled(NavLink)`
+  text-align: center;
+  height: 32px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: ${p => p.theme.color.accent};
+
+  background-color: ${p => p.theme.color.primary};
   border: 1px solid ${p => p.theme.color.accent};
   border-radius: 4px;
   transition: transform 250ms ease;

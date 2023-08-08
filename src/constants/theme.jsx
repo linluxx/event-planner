@@ -6,6 +6,7 @@ const theme = {
     low: '#6BD475',
     divider: '#ACA7C3',
     text: '#3F3F3F',
+    primary: '#fff',
   },
 };
 

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { deleteEvent } from '../api/Api';
+import { selectPicture } from '../../utils/getPicturePath';
 
 import {
   Title,
@@ -11,10 +12,12 @@ import {
   Note,
   Btn,
   BtnWrap,
+  EditLink,
 } from './CardDetails.styled';
 
 const CardDetails = ({ data }) => {
-  const { category, date, description, location, priority, title } = data;
+  const { category, date, description, location, priority, time, title, id } =
+    data;
   const formattedDate = format(new Date(date), 'dd.MM.yy');
   const navigate = useNavigate();
 
@@ -26,20 +29,20 @@ const CardDetails = ({ data }) => {
     <>
       <Title>{title}</Title>
       <Card>
-        <img src="/images/art.png" alt="art" />
+        <img src={selectPicture(category)} alt={category} />
         <Info>
           <Description>{description}</Description>
           <NotesWrap>
             <Note>{category}</Note>
             <Note $priority={priority}>{priority}</Note>
             <Note>{location}</Note>
-            <Note>{formattedDate} at 12:00 am</Note>
+            <Note>
+              {formattedDate} at {time}
+            </Note>
           </NotesWrap>
           <BtnWrap>
-            <Btn type="button" $category="edit">
-              Edit
-            </Btn>
-            <Btn type="button" $category="delete" onClick={onDeleteEvent}>
+            <EditLink to={`/edit/${id}`}>Edit</EditLink>
+            <Btn type="button" onClick={onDeleteEvent}>
               Delete event
             </Btn>
           </BtnWrap>

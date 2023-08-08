@@ -1,45 +1,51 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import sprite from '../../sprite.svg';
+// import sprite from '../../sprite.svg';
 
-import { createEvent } from '../api/Api';
+import { createEvent, editEvent } from '../api/Api';
 
 import {
   Form,
   Label,
   Input,
   Error,
-  Select,
   TextArea,
   Btn,
   InputsWrap,
+  SelectWrap,
 } from './ReusedForm.styled';
 import DatePickerComponent from '../../components/Calendar/Calendar';
 import Clock from '../TimePicker/TimePicker';
+import SelectForm from '../SelectForm/SelectForm';
 
 const ReusedForm = ({ type, event = null }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedPriority, setSelectedPriority] = useState(null);
+
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
-    defaultValues: {
-      title: event?.title,
-      description: event?.description || '',
-      date: event?.date || '',
-      time: event?.time || '',
-      location: event?.location || '',
-      category: event?.category || null,
-      picture: event?.picture || '',
-      priority: event?.priority || null,
-    },
   });
+
+  useEffect(() => {
+    if (event !== null) {
+      setValue('title', event?.title);
+      setValue('description', event?.description);
+      setValue('location', event?.location);
+      setValue('description', event?.description);
+      setValue('description', event?.description);
+    }
+  }, [event, event?.description, event?.location, event?.title, setValue]);
 
   const handleDateChange = date => {
     setSelectedDate(date);
@@ -47,18 +53,25 @@ const ReusedForm = ({ type, event = null }) => {
   const handleTimeChange = time => {
     setSelectedTime(time);
   };
-
+  const handleCategoryChange = category => {
+    setSelectedCategory(category);
+  };
+  const handlePriorityChange = priority => {
+    setSelectedPriority(priority);
+  };
   const onSubmit = async data => {
     data.date = selectedDate;
     data.time = selectedTime;
+    data.category = selectedCategory;
+    data.priority = selectedPriority;
     if (type === 'create') {
       await createEvent(data);
       navigate('/', { replace: true });
     }
-    //    if (type === 'edit') {
-    //      await editEvent(data, event.id);
-    //      navigate(`/event/${event.id}`, { replace: true });
-    //    }
+    if (type === 'edit') {
+      await editEvent(data, event.id);
+      navigate(`/event/${event.id}`, { replace: true });
+    }
 
     reset({ ...data });
   };
@@ -78,12 +91,12 @@ const ReusedForm = ({ type, event = null }) => {
               border: errors.title ? '1px solid #FF2B77' : '1px solid #ACA7C3',
             }}
           />
-          <svg
+          {/* <svg
             onClick={() => alert('delete')}
             style={{ stroke: errors.title ? ' #FF2B77' : '#7B61FF' }}
           >
             <use href={sprite + '#cross-small'} />
-          </svg>
+          </svg> */}
           {errors?.title && (
             <Error>
               <p>{errors?.title?.message || 'Invalid input'}</p>
@@ -104,9 +117,9 @@ const ReusedForm = ({ type, event = null }) => {
                 : '1px solid #ACA7C3',
             }}
           />
-          <svg style={{ stroke: errors.description ? ' #FF2B77' : '#7B61FF' }}>
+          {/* <svg style={{ stroke: errors.description ? ' #FF2B77' : '#7B61FF' }}>
             <use href={sprite + '#cross-small'} />
-          </svg>
+          </svg> */}
           {errors?.description && (
             <Error>
               <p>{errors?.description?.message || 'Invalid input'}</p>
@@ -140,9 +153,9 @@ const ReusedForm = ({ type, event = null }) => {
                 : '1px solid #ACA7C3',
             }}
           />
-          <svg style={{ stroke: errors.location ? ' #FF2B77' : '#7B61FF' }}>
+          {/* <svg style={{ stroke: errors.location ? ' #FF2B77' : '#7B61FF' }}>
             <use href={sprite + '#cross-small'} />
-          </svg>
+          </svg> */}
           {errors?.location && (
             <Error>
               <p>{errors?.location?.message || 'Invalid input'}</p>
@@ -151,74 +164,34 @@ const ReusedForm = ({ type, event = null }) => {
         </Label>
         <Label>
           Category
-          <Select
-            name="category"
-            {...register('category', {
-              required: 'Required field',
-            })}
-            style={{
-              border: errors.category
-                ? '1px solid #FF2B77'
-                : '1px solid #ACA7C3',
-            }}
-          >
-            <option value="Art">Art</option>
-            <option value="Music">Music</option>
-            <option value="Business">Business</option>
-            <option value="Conference">Conference</option>
-            <option value="Workshop">Workshop</option>
-            <option value="Party">Party</option>
-            <option value="Sport">Sport</option>
-          </Select>
-          {errors?.category && (
-            <Error>
-              <p>{errors?.category?.message || 'Invalid input'}</p>
-            </Error>
-          )}
+          <SelectWrap>
+            <SelectForm
+              selectedOp={
+                event ? { value: event.category, label: event.category } : null
+              }
+              optionsName="category"
+              onHandle={handleCategoryChange}
+            />
+          </SelectWrap>
         </Label>
         <Label>
           Add picture
-          <Input
-            disabled
-            type="text"
-            {...register('picture', {})}
-            style={{
-              border: errors.picture
-                ? '1px solid #FF2B77'
-                : '1px solid #ACA7C3',
-            }}
-          />
-          {errors?.picture && (
-            <Error>
-              <p>{errors?.picture?.message || 'Invalid input'}</p>
-            </Error>
-          )}
+          <Input disabled />
         </Label>
         <Label>
           Priority
-          <Select
-            name="priority"
-            {...register('priority', {
-              required: 'Required field',
-            })}
-            style={{
-              border: errors.priority
-                ? '1px solid #FF2B77'
-                : '1px solid #ACA7C3',
-            }}
-          >
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </Select>
-          {errors?.priority && (
-            <Error>
-              <p>{errors?.priority?.message || 'Invalid input'}</p>
-            </Error>
-          )}
+          <SelectWrap>
+            <SelectForm
+              selectedOp={
+                event ? { value: event.priority, label: event.priority } : null
+              }
+              optionsName="priority"
+              onHandle={handlePriorityChange}
+            />
+          </SelectWrap>
         </Label>
       </InputsWrap>
-      <Btn type="submit">Add event</Btn>
+      <Btn type="submit">{type === 'create' ? 'Add event' : 'Save'}</Btn>
     </Form>
   );
 };

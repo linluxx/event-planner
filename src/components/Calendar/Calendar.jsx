@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { DatePickerContainer, DatePickerWrapper } from './Calendar.styled';
 
 const DatePickerComponent = ({ selectedDate, onDateChange }) => {
+  // console.log(selectedDate);
   return (
     <DatePickerContainer>
       <DatePickerWrapper>

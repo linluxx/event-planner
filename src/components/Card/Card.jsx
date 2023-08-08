@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-
+import { selectPicture } from '../../utils/getPicturePath';
 import {
   Container,
   Note,
@@ -13,12 +13,12 @@ import {
   Btn,
   InfoWrap,
 } from './Card.styled';
-// import art from '../../art.png';
 
 const Card = ({ data }) => {
   const { category, date, description, id, time, location, priority, title } =
     data;
   const formattedDate = format(new Date(date), 'dd.MM.yy');
+
   return (
     <Container>
       <NotesWrap>
@@ -30,7 +30,7 @@ const Card = ({ data }) => {
         </Note>
       </NotesWrap>
 
-      <img src={`${process.env.PUBLIC_URL}/images/${category}.png`} alt="art" />
+      <img src={selectPicture(category)} alt={category} />
       <InfoWrap className="infoWrap">
         <Info>
           <p>

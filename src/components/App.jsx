@@ -3,6 +3,7 @@ import Layout from './UI/Layout/Layout';
 import Main from '../pages/Main/Main';
 import CreateEvent from '../pages/CreateEvent/CreateEvent';
 import EventDetails from '../pages/EventDetails/EventDetails';
+import EditEvent from '../pages/EditEvent/EditEvent';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<Main />} />
           <Route path="create" element={<CreateEvent />} />
           <Route path="event/:eventId" element={<EventDetails />} />
+          <Route path="edit/:eventId" element={<EditEvent />} />
         </Route>
       </Routes>
     </div>

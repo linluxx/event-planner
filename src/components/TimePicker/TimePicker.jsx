@@ -1,11 +1,13 @@
 import React from 'react';
 import { TimePicker } from 'antd';
+
+import './TimePicker.css';
 import { Container } from './TimePicker.styled';
 
-const Clock = ({ onTimeChange, selectedTime }) => {
+const Clock = ({ onTimeChange }) => {
   const onSelectTime = (time, timeString) => {
-    console.log(timeString);
     onTimeChange(timeString);
+    console.log(timeString);
   };
 
   return (
@@ -14,6 +16,7 @@ const Clock = ({ onTimeChange, selectedTime }) => {
         use12Hours
         format="h:mm a"
         onChange={onSelectTime}
+        changeOnBlur={true}
         bottomLeft={true}
         popupClassName="time-picker-wrap"
       />

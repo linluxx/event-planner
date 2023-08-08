@@ -5,7 +5,7 @@ const { tablet, laptop } = DEVICE;
 export const Form = styled.form`
   box-sizing: border-box;
   border-radius: 8px;
-  background: #fff;
+  background: ${p => p.theme.color.primary};
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   padding: 40px 16px;
   width: 272px;
@@ -34,6 +34,18 @@ export const InputsWrap = styled.div`
   }
   @media ${laptop} {
     height: 350px;
+  }
+`;
+
+export const SelectWrap = styled.div`
+  width: 240px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  @media ${tablet} {
+    width: 308px;
+  }
+  @media ${laptop} {
+    width: 372px;
   }
 `;
 export const Label = styled.label`
@@ -68,6 +80,8 @@ export const Input = styled.input`
   margin-bottom: 20px;
   outline: none;
   margin-top: 8px;
+  font-size: 16px;
+  color: ${p => p.theme.color.text};
   @media ${tablet} {
     width: 308px;
   }
@@ -85,7 +99,7 @@ export const Error = styled.div`
 export const TextArea = styled.textarea`
   box-sizing: border-box;
   width: 240px;
-
+  color: ${p => p.theme.color.text};
   padding: 16px 12px;
   height: 156px;
   border-radius: 8px;
@@ -104,32 +118,13 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const Select = styled.select`
-  box-sizing: border-box;
-  width: 240px;
-
-  padding: 16px 12px;
-  border-radius: 8px;
-  border: 1px solid ${p => p.theme.color.divider};
-  font-family: Poppins;
-  margin-bottom: 20px;
-  outline: none;
-  margin-top: 8px;
-  @media ${tablet} {
-    width: 308px;
-  }
-  @media ${laptop} {
-    width: 372px;
-  }
-`;
-
 export const Btn = styled.button`
   width: 100%;
   padding: 16px 12px;
   border-radius: 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   background-color: ${p => p.theme.color.accent};
-  color: #fff;
+  color: ${p => p.theme.color.primary};
   font-weight: 500;
   font-size: 16px;
   font-family: inherit;

@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import BackButton from '../../components/BackButton/BackButton';
+import ReusedForm from '../../components/ReusedForm/ReusedForm';
 import { getEventById } from '../../components/api/Api';
-import CardDetails from '../../components/CardDetails/CardDetails';
 
-const EventDetails = () => {
+import { Title } from './EditEvent.styled';
+
+const EditEvent = () => {
   const [event, setEvent] = useState(null);
   const { eventId } = useParams();
 
@@ -16,13 +18,13 @@ const EventDetails = () => {
     })();
     return () => {};
   }, [eventId]);
-
   return (
     <div>
       <BackButton />
-      {event && <CardDetails data={event} />}
+      <Title>Edit event</Title>
+      <ReusedForm type="edit" event={event} />
     </div>
   );
 };
 
-export default EventDetails;
+export default EditEvent;

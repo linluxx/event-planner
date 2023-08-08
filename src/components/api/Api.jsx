@@ -35,3 +35,11 @@ export const createEvent = async data => {
     return;
   }
 };
+export const editEvent = async (data, id) => {
+  try {
+    const response = await axios.put(`/events/${id}`, { ...data });
+    return response;
+  } catch (error) {
+    return;
+  }
+};

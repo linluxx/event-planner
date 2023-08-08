@@ -18,7 +18,7 @@ export const DatePickerWrapper = styled.div`
     border-radius: 11px;
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.07);
     width: 240px;
-    background-color: #fff;
+    background-color: ${p => p.theme.color.primary};
     height: 348px;
     padding: 20px;
 
@@ -43,6 +43,9 @@ export const DatePickerWrapper = styled.div`
       border: 1px solid ${p => p.theme.color.divider};
       outline: none;
       padding: 16px;
+      font-size: 16px;
+      font-family: Poppins;
+      color: ${p => p.theme.color.text};
       @media ${tablet} {
         width: 308px;
       }
@@ -60,7 +63,7 @@ export const DatePickerWrapper = styled.div`
   }
   .react-datepicker__header {
     color: ${p => p.theme.color.text};
-    background-color: #fff;
+    background-color: ${p => p.theme.color.primary};
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -141,9 +144,14 @@ export const DatePickerWrapper = styled.div`
 
   .react-datepicker__day--selected {
     background-color: ${p => p.theme.color.accent};
-    color: #fff;
+    color: ${p => p.theme.color.primary};
   }
   .react-datepicker__day--today {
     color: ${p => p.theme.color.accent};
+  }
+  .react-datepicker__close-icon::after {
+    color: ${p => p.theme.color.accent};
+    background-color: transparent;
+    font-size: 25px;
   }
 `;

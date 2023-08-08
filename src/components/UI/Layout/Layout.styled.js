@@ -32,7 +32,7 @@ export const Select = styled.select`
   font-weight: 500;
   border: transparent;
   border-radius: 8px;
-  background: #fff;
+  background: ${p => p.theme.color.primary};
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   color: ${p => p.theme.color.text};
 `;
