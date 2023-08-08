@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/event-planner/static/css/main.7ee8721a.css",
-    "main.js": "/event-planner/static/js/main.72b37e5e.js",
+    "main.css": "/event-planner/static/css/main.25fbfd92.css",
+    "main.js": "/event-planner/static/js/main.ed50f821.js",
+    "static/media/music.png": "/event-planner/static/media/music.432d59a48a520ab24e51.png",
+    "static/media/conference.png": "/event-planner/static/media/conference.bd8fff737eeade276562.png",
+    "static/media/sport.png": "/event-planner/static/media/sport.92ca4a5a872c682de1df.png",
     "static/media/bg.png": "/event-planner/static/media/bg.cdf3d4c004997455e502.png",
-    "static/media/sprite.svg": "/event-planner/static/media/sprite.28499286b77b61f1180f6ba3725ce447.svg",
+    "static/media/art.png": "/event-planner/static/media/art.c09a4416ec92acff416b.png",
+    "static/media/party.png": "/event-planner/static/media/party.dc83b92c8ab7508e7049.png",
+    "static/media/business.png": "/event-planner/static/media/business.438a27138f8de4d4d9fe.png",
+    "static/media/workshop.png": "/event-planner/static/media/workshop.a24b18a54324c3a04dd5.png",
+    "static/media/sprite.svg": "/event-planner/static/media/sprite.b7e18f43a0ddf8bd8bbb0f4aa245ab73.svg",
     "index.html": "/event-planner/index.html",
-    "main.7ee8721a.css.map": "/event-planner/static/css/main.7ee8721a.css.map",
-    "main.72b37e5e.js.map": "/event-planner/static/js/main.72b37e5e.js.map"
+    "main.25fbfd92.css.map": "/event-planner/static/css/main.25fbfd92.css.map",
+    "main.ed50f821.js.map": "/event-planner/static/js/main.ed50f821.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ee8721a.css",
-    "static/js/main.72b37e5e.js"
+    "static/css/main.25fbfd92.css",
+    "static/js/main.ed50f821.js"
   ]
 }
